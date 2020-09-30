@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		AEE824A92524AB8800A83B8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE824A82524AB8800A83B8C /* AppDelegate.swift */; };
 		AEE824AB2524AB8800A83B8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE824AA2524AB8800A83B8C /* SceneDelegate.swift */; };
-		AEE824AD2524AB8800A83B8C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE824AC2524AB8800A83B8C /* ViewController.swift */; };
+		AEE824AD2524AB8800A83B8C /* WordScrambleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE824AC2524AB8800A83B8C /* WordScrambleViewController.swift */; };
 		AEE824B02524AB8800A83B8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE824AE2524AB8800A83B8C /* Main.storyboard */; };
 		AEE824B22524AB8900A83B8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE824B12524AB8900A83B8C /* Assets.xcassets */; };
 		AEE824B52524AB8900A83B8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE824B32524AB8900A83B8C /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		AEE824A52524AB8800A83B8C /* WordScramble-UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WordScramble-UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE824A82524AB8800A83B8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEE824AA2524AB8800A83B8C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AEE824AC2524AB8800A83B8C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AEE824AC2524AB8800A83B8C /* WordScrambleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleViewController.swift; sourceTree = "<group>"; };
 		AEE824AF2524AB8800A83B8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AEE824B12524AB8900A83B8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEE824B42524AB8900A83B8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			children = (
 				AEE824A82524AB8800A83B8C /* AppDelegate.swift */,
 				AEE824AA2524AB8800A83B8C /* SceneDelegate.swift */,
-				AEE824AC2524AB8800A83B8C /* ViewController.swift */,
+				AEE824AC2524AB8800A83B8C /* WordScrambleViewController.swift */,
 				AEE824AE2524AB8800A83B8C /* Main.storyboard */,
 				AEE824B12524AB8900A83B8C /* Assets.xcassets */,
 				AEE824B32524AB8900A83B8C /* LaunchScreen.storyboard */,
@@ -137,7 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEE824AD2524AB8800A83B8C /* ViewController.swift in Sources */,
+				AEE824AD2524AB8800A83B8C /* WordScrambleViewController.swift in Sources */,
 				AEE824A92524AB8800A83B8C /* AppDelegate.swift in Sources */,
 				AEE824AB2524AB8800A83B8C /* SceneDelegate.swift in Sources */,
 			);

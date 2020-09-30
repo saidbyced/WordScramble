@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  WordScrambleViewController.swift
 //  WordScramble-UIKit
 //
 //  Created by Chris Eadie on 30/09/2020.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class WordScrambleViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
