@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BF6D307252B484D00879BC0 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1BF6D306252B484D00879BC0 /* start.txt */; };
 		AEE824A92524AB8800A83B8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE824A82524AB8800A83B8C /* AppDelegate.swift */; };
 		AEE824AB2524AB8800A83B8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE824AA2524AB8800A83B8C /* SceneDelegate.swift */; };
 		AEE824AD2524AB8800A83B8C /* WordScrambleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE824AC2524AB8800A83B8C /* WordScrambleViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1BF6D306252B484D00879BC0 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 		AEE824A52524AB8800A83B8C /* WordScramble-UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WordScramble-UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE824A82524AB8800A83B8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEE824AA2524AB8800A83B8C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				AEE824A82524AB8800A83B8C /* AppDelegate.swift */,
 				AEE824AA2524AB8800A83B8C /* SceneDelegate.swift */,
 				AEE824AC2524AB8800A83B8C /* WordScrambleViewController.swift */,
+				1BF6D306252B484D00879BC0 /* start.txt */,
 				AEE824AE2524AB8800A83B8C /* Main.storyboard */,
 				AEE824B12524AB8900A83B8C /* Assets.xcassets */,
 				AEE824B32524AB8900A83B8C /* LaunchScreen.storyboard */,
@@ -125,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEE824B52524AB8900A83B8C /* LaunchScreen.storyboard in Resources */,
+				1BF6D307252B484D00879BC0 /* start.txt in Resources */,
 				AEE824B22524AB8900A83B8C /* Assets.xcassets in Resources */,
 				AEE824B02524AB8800A83B8C /* Main.storyboard in Resources */,
 			);
