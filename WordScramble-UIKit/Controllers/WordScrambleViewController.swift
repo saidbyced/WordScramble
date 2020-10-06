@@ -13,14 +13,14 @@ class WordScrambleViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(freshWord))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
-        startGame()
+        title = words.current
     }
     
-    func startGame() {
-        title = words.all.randomElement()?.lowercased()
-        words.used.removeAll(keepingCapacity: true)
+    @objc func refresh() {
+        words.refresh()
+        title = words.current
         tableView.reloadData()
     }
     
@@ -50,10 +50,6 @@ class WordScrambleViewController: UITableViewController {
         
         ac.addAction(submitAction)
         present(ac, animated: true)
-    }
-    
-    @objc func freshWord() {
-        startGame()
     }
     
     func submit(_ answer: String) {

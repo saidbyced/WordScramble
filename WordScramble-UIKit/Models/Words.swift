@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Words {
+class Words {
     var all: [String] = ["silkworm"]
     var current: String = "silkworm"
     var used = [String]()
@@ -23,9 +23,11 @@ struct Words {
         }
     }
     
-    mutating func nextCurrent() {
+    func refresh() {
         if let new = all.randomElement()?.lowercased() {
             current = new
         }
+        
+        used.removeAll(keepingCapacity: true)
     }
 }
