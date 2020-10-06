@@ -74,10 +74,10 @@ class WordScrambleViewController: UITableViewController {
         let lowerAnswer = answer.lowercased()
         var error: SubmissionError?
         
-        if isValid(word: answer) {
-            if isOriginal(word: answer) {
-                if isPossible(word: answer) {
-                    if isReal(word: answer) {
+        if isValid(word: lowerAnswer) {
+            if isOriginal(word: lowerAnswer) {
+                if isPossible(word: lowerAnswer) {
+                    if isReal(word: lowerAnswer) {
                         error = nil
                         usedWords.insert(lowerAnswer, at: 0)
                         
