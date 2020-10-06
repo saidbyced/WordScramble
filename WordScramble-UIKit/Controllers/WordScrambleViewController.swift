@@ -80,7 +80,7 @@ class WordScrambleViewController: UITableViewController {
     }
     
     func addWord(_ word: String) {
-        words.used.insert(word, at: 0)
+        words.addUsed(word)
         
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .top)

@@ -30,4 +30,8 @@ class Words {
         
         used.removeAll(keepingCapacity: true)
     }
+    
+    func addUsed(_ word: String) {
+        used.insert(word, at: 0)
+    }
 }
