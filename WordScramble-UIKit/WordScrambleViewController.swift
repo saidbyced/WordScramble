@@ -66,18 +66,58 @@ class WordScrambleViewController: UITableViewController {
     }
     
     func submit(_ answer: String) {
-        let answer = answer.lowercased()
+        let lowerAnswer = answer.lowercased()
+        var error: SubmissionError?
+        
+        enum SubmissionError {
+            case notOriginal, notPossible, notReal
+            
+            var title: String {
+                switch self {
+                case .notOriginal:
+                    return "Word used already"
+                case .notPossible:
+                    return "Word not possible"
+                case .notReal:
+                    return "Word not recognised"
+                }
+            }
+            var message: String {
+                switch self {
+                case .notOriginal:
+                    return "Be more original!"
+                case .notPossible:
+                    return "You can't spell that word from \(title)"
+                case .notReal:
+                    return "You can't just make them up, you know!"
+                }
+            }
+        }
         
         if isOriginal(word: answer) {
             if isPossible(word: answer) {
                 if isReal(word: answer) {
-                    usedWords.append(answer)
+                    error = nil
+                    usedWords.insert(lowerAnswer, at: 0)
                     
                     let indexPath = IndexPath(row: 0, section: 0)
-                    tableView.insertRows(at: [indexPath], with: .automatic)
+                    tableView.insertRows(at: [indexPath], with: .top)
+                    
+                    return
+                } else {
+                    error = .notReal
                 }
+            } else {
+                error = .notPossible
             }
+        } else {
+            error = .notOriginal
         }
+        
+        let ac = UIAlertController(title: error?.title, message: error?.message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        ac.addAction(action)
+        present(ac, animated: true)
     }
     
     func isOriginal(word: String) -> Bool {
