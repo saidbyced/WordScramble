@@ -69,35 +69,6 @@ class WordScrambleViewController: UITableViewController {
         let lowerAnswer = answer.lowercased()
         var error: SubmissionError?
         
-        enum SubmissionError {
-            case notValid, notOriginal, notPossible, notReal
-            
-            var title: String {
-                switch self {
-                case .notValid:
-                    return "Word not valid"
-                case .notOriginal:
-                    return "Word used already"
-                case .notPossible:
-                    return "Word not possible"
-                case .notReal:
-                    return "Word not recognised"
-                }
-            }
-            var message: String {
-                switch self {
-                case .notValid:
-                    return "Must be longer than 3 letters\nand not the given word!"
-                case .notOriginal:
-                    return "Be more original!"
-                case .notPossible:
-                    return "You can't spell that word from \(title)"
-                case .notReal:
-                    return "You can't just make them up, you know!"
-                }
-            }
-        }
-        
         if isValid(word: answer) {
             if isOriginal(word: answer) {
                 if isPossible(word: answer) {
@@ -122,10 +93,8 @@ class WordScrambleViewController: UITableViewController {
             error = .notValid
         }
         
-        let ac = UIAlertController(title: error?.title, message: error?.message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default)
-        ac.addAction(action)
-        present(ac, animated: true)
+        guard let alert = error?.alert else { return }
+        present(alert, animated: true)
     }
     
     func isValid(word: String) -> Bool {
@@ -160,5 +129,43 @@ class WordScrambleViewController: UITableViewController {
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
         
         return misspelledRange.location == NSNotFound
+    }
+    
+    enum SubmissionError {
+        case notValid, notOriginal, notPossible, notReal
+        
+        var alert: UIAlertController {
+            var title: String {
+                switch self {
+                case .notValid:
+                    return "Word not valid"
+                case .notOriginal:
+                    return "Word used already"
+                case .notPossible:
+                    return "Word not possible"
+                case .notReal:
+                    return "Word not recognised"
+                }
+            }
+            
+            var message: String {
+                switch self {
+                case .notValid:
+                    return "Word must be longer than 3 letters\nand not the given word!"
+                case .notOriginal:
+                    return "Be more original!"
+                case .notPossible:
+                    return "You can't spell that word from \(title)"
+                case .notReal:
+                    return "You can't just make them up, you know!"
+                }
+            }
+            
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(action)
+            
+            return alert
+        }
     }
 }
