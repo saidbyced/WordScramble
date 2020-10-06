@@ -33,7 +33,7 @@ class WordScrambleViewController: UITableViewController {
     }
     
     func startGame() {
-        title = allWords.randomElement()
+        title = allWords.randomElement()?.lowercased()
         usedWords.removeAll(keepingCapacity: true)
         tableView.reloadData()
     }
@@ -71,19 +71,14 @@ class WordScrambleViewController: UITableViewController {
     }
     
     func submit(_ answer: String) {
-        let lowerAnswer = answer.lowercased()
+        let answer = answer.lowercased()
         var error: SubmissionError?
         
-        if isValid(word: lowerAnswer) {
-            if isOriginal(word: lowerAnswer) {
-                if isPossible(word: lowerAnswer) {
-                    if isReal(word: lowerAnswer) {
-                        error = nil
-                        usedWords.insert(lowerAnswer, at: 0)
-                        
-                        let indexPath = IndexPath(row: 0, section: 0)
-                        tableView.insertRows(at: [indexPath], with: .top)
-                        
+        if answer.isValid(for: title!) {
+            if answer.isOriginal(in: usedWords) {
+                if answer.isPossible(for: title!) {
+                    if answer.isReal() {
+                        addWord(answer)
                         return
                     } else {
                         error = .notReal
@@ -102,38 +97,11 @@ class WordScrambleViewController: UITableViewController {
         present(alert, animated: true)
     }
     
-    func isValid(word: String) -> Bool {
-        if word.count < 4 || word == title {
-            return false
-        }
+    func addWord(_ word: String) {
+        usedWords.insert(word, at: 0)
         
-        return true
-    }
-    
-    func isOriginal(word: String) -> Bool {
-        return !usedWords.contains(word)
-    }
-    
-    func isPossible(word: String) -> Bool {
-        guard var tempWord = title?.lowercased() else { return false }
-        
-        for letter in tempWord {
-            if let position = tempWord.firstIndex(of: letter) {
-                tempWord.remove(at: position)
-            } else {
-                return false
-            }
-        }
-        
-        return true
-    }
-    
-    func isReal(word: String) -> Bool {
-        let checker = UITextChecker()
-        let range = NSRange(location: 0, length: word.utf16.count)
-        let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
-        
-        return misspelledRange.location == NSNotFound
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.insertRows(at: [indexPath], with: .top)
     }
     
     enum SubmissionError {
@@ -172,5 +140,41 @@ class WordScrambleViewController: UITableViewController {
             
             return alert
         }
+    }
+}
+
+extension String {
+    func isValid(for givenWord: String) -> Bool {
+        if self.count < 4 || self == givenWord {
+            return false
+        }
+        
+        return true
+    }
+    
+    func isOriginal(in usedWords: [String]) -> Bool {
+        return !usedWords.contains(self)
+    }
+    
+    func isPossible(for givenWord: String) -> Bool {
+        var tempWord = givenWord.lowercased()
+        
+        for letter in tempWord {
+            if let position = tempWord.firstIndex(of: letter) {
+                tempWord.remove(at: position)
+            } else {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    func isReal() -> Bool {
+        let checker = UITextChecker()
+        let range = NSRange(location: 0, length: self.utf16.count)
+        let misspelledRange = checker.rangeOfMisspelledWord(in: self, range: range, startingAt: 0, wrap: false, language: "en")
+        
+        return misspelledRange.location == NSNotFound
     }
 }
