@@ -70,10 +70,12 @@ class WordScrambleViewController: UITableViewController {
         var error: SubmissionError?
         
         enum SubmissionError {
-            case notOriginal, notPossible, notReal
+            case notValid, notOriginal, notPossible, notReal
             
             var title: String {
                 switch self {
+                case .notValid:
+                    return "Word not valid"
                 case .notOriginal:
                     return "Word used already"
                 case .notPossible:
@@ -84,6 +86,8 @@ class WordScrambleViewController: UITableViewController {
             }
             var message: String {
                 switch self {
+                case .notValid:
+                    return "Must be longer than 3 letters\nand not the given word!"
                 case .notOriginal:
                     return "Be more original!"
                 case .notPossible:
@@ -94,30 +98,42 @@ class WordScrambleViewController: UITableViewController {
             }
         }
         
-        if isOriginal(word: answer) {
-            if isPossible(word: answer) {
-                if isReal(word: answer) {
-                    error = nil
-                    usedWords.insert(lowerAnswer, at: 0)
-                    
-                    let indexPath = IndexPath(row: 0, section: 0)
-                    tableView.insertRows(at: [indexPath], with: .top)
-                    
-                    return
+        if isValid(word: answer) {
+            if isOriginal(word: answer) {
+                if isPossible(word: answer) {
+                    if isReal(word: answer) {
+                        error = nil
+                        usedWords.insert(lowerAnswer, at: 0)
+                        
+                        let indexPath = IndexPath(row: 0, section: 0)
+                        tableView.insertRows(at: [indexPath], with: .top)
+                        
+                        return
+                    } else {
+                        error = .notReal
+                    }
                 } else {
-                    error = .notReal
+                    error = .notPossible
                 }
             } else {
-                error = .notPossible
+                error = .notOriginal
             }
         } else {
-            error = .notOriginal
+            error = .notValid
         }
         
         let ac = UIAlertController(title: error?.title, message: error?.message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default)
         ac.addAction(action)
         present(ac, animated: true)
+    }
+    
+    func isValid(word: String) -> Bool {
+        if word.count < 4 || word == title {
+            return false
+        }
+        
+        return true
     }
     
     func isOriginal(word: String) -> Bool {
