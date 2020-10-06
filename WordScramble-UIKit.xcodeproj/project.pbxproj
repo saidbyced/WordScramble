@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B24B668252C8EE000FF490B /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B24B667252C8EE000FF490B /* Words.swift */; };
+		1BD716BA252CA55B008EE5C8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD716B9252CA55B008EE5C8 /* Extensions.swift */; };
 		1BF6D307252B484D00879BC0 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1BF6D306252B484D00879BC0 /* start.txt */; };
 		AEE824A92524AB8800A83B8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE824A82524AB8800A83B8C /* AppDelegate.swift */; };
 		AEE824AB2524AB8800A83B8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE824AA2524AB8800A83B8C /* SceneDelegate.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		1B24B667252C8EE000FF490B /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
+		1BD716B9252CA55B008EE5C8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1BF6D306252B484D00879BC0 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 		AEE824A52524AB8800A83B8C /* WordScramble-UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WordScramble-UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE824A82524AB8800A83B8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				1B24B66F252C92CF00FF490B /* Controllers */,
 				1B24B66E252C92C700FF490B /* Models */,
 				1B24B670252C92E600FF490B /* Views */,
+				1BD716B9252CA55B008EE5C8 /* Extensions.swift */,
 				1BF6D306252B484D00879BC0 /* start.txt */,
 				AEE824A82524AB8800A83B8C /* AppDelegate.swift */,
 				AEE824AA2524AB8800A83B8C /* SceneDelegate.swift */,
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BD716BA252CA55B008EE5C8 /* Extensions.swift in Sources */,
 				AEE824AD2524AB8800A83B8C /* WordScrambleViewController.swift in Sources */,
 				1B24B668252C8EE000FF490B /* Words.swift in Sources */,
 				AEE824A92524AB8800A83B8C /* AppDelegate.swift in Sources */,
