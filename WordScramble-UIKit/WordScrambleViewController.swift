@@ -9,32 +9,18 @@ import UIKit
 
 class WordScrambleViewController: UITableViewController {
     
-    var allWords = [String]()
-    var usedWords = [String]()
+    var words = Words()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(freshWord))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
-        loadWords()
         startGame()
     }
     
-    func loadWords() {
-        if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
-            if let startWords = try? String(contentsOf: startWordsURL) {
-                allWords = startWords.components(separatedBy: "\n")
-            }
-        }
-        
-        if allWords.isEmpty {
-            allWords = ["silkworm"]
-        }
-    }
-    
     func startGame() {
-        title = allWords.randomElement()?.lowercased()
-        usedWords.removeAll(keepingCapacity: true)
+        title = words.all.randomElement()?.lowercased()
+        words.used.removeAll(keepingCapacity: true)
         tableView.reloadData()
     }
     
@@ -43,12 +29,12 @@ class WordScrambleViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return usedWords.count
+        return words.used.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "usedWord", for: indexPath)
-        cell.textLabel?.text = usedWords[indexPath.row]
+        cell.textLabel?.text = words.used[indexPath.row]
         
         return cell
     }
@@ -75,7 +61,7 @@ class WordScrambleViewController: UITableViewController {
         var error: SubmissionError?
         
         if answer.isValid(for: title!) {
-            if answer.isOriginal(in: usedWords) {
+            if answer.isOriginal(in: words.used) {
                 if answer.isPossible(for: title!) {
                     if answer.isReal() {
                         addWord(answer)
@@ -98,7 +84,7 @@ class WordScrambleViewController: UITableViewController {
     }
     
     func addWord(_ word: String) {
-        usedWords.insert(word, at: 0)
+        words.used.insert(word, at: 0)
         
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .top)
